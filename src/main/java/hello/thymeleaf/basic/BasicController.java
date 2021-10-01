@@ -76,4 +76,17 @@ public class BasicController {
             return "Hello " + data;
         }
     }
+
+    @GetMapping("/link")
+    public String link(Model model) {
+        model.addAttribute("param1", "param1");
+        model.addAttribute("param2", "param2");
+        return "basic/link";
+    }
+
+    @GetMapping("/literal")
+    public String literal(Model model) {
+        model.addAttribute("data", "Spring!");
+        return "basic/literal";
+    }
 }
