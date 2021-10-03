@@ -52,29 +52,10 @@ public class BasicController {
         return "basic/variable";
     }
 
-    @Data
-    static class User {
-
-        private String username;
-        private int age;
-
-        public User(String username, int age) {
-            this.username = username;
-            this.age = age;
-        }
-    }
-
     @GetMapping("/basic-objects")
     public String basicObjects(HttpSession session) {
         session.setAttribute("sessionData", "Hello Session");
         return "basic/basic-objects";
-    }
-
-    @Component("helloBean")
-    static class HelloBean {
-        public String hello(String data) {
-            return "Hello " + data;
-        }
     }
 
     @GetMapping("/link")
@@ -88,5 +69,36 @@ public class BasicController {
     public String literal(Model model) {
         model.addAttribute("data", "Spring!");
         return "basic/literal";
+    }
+
+    @GetMapping("/operation")
+    public String operation(Model model) {
+        model.addAttribute("nullData", null);
+        model.addAttribute("data", "Spring!");
+        return "basic/operation";
+    }
+
+    @GetMapping("/attribute")
+    public String attribute() {
+        return "basic/attribute";
+    }
+
+    @Data
+    static class User {
+
+        private String username;
+        private int age;
+
+        public User(String username, int age) {
+            this.username = username;
+            this.age = age;
+        }
+    }
+
+    @Component("helloBean")
+    static class HelloBean {
+        public String hello(String data) {
+            return "Hello " + data;
+        }
     }
 }
