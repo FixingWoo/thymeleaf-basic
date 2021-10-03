@@ -89,6 +89,18 @@ public class BasicController {
         return "basic/each";
     }
 
+    @GetMapping("/condition")
+    public String condition(Model model) {
+        addUsers(model);
+        return "/basic/condition";
+    }
+
+    @GetMapping("/comments")
+    public String comment(Model model) {
+        model.addAttribute("data", "Spring!");
+        return "/basic/comment";
+    }
+
     private void addUsers(Model model) {
         List<User> list = new ArrayList<>();
 
